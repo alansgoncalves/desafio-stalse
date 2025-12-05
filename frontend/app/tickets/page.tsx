@@ -1,17 +1,15 @@
-// /frontend/app/tickets/page.tsx
-
 import { fetchTickets } from "@/lib/services";
 import { TicketsTable } from "@/components/TicketsTable";
 import { Suspense } from "react";
 import { Ticket } from "@/lib/types";
 
-// Componente de página principal (Server Component)
+// Componente de página principal
 export default async function TicketsPage() {
     let initialTickets: Ticket[] = [];
     let error: string | null = null;
 
     try {
-        // Busca inicial de todos os tickets no servidor (SSR)
+        // Busca inicial de todos os tickets no servidor
         initialTickets = await fetchTickets();
     } catch (err) {
         console.error("Erro ao carregar tickets iniciais:", err);
