@@ -26,12 +26,16 @@ function buildUrl(path: string, query?: Record<string, string>): string {
   return url.toString();
 }
 
+type RequestOptions = Omit<RequestInit, "body"> & {
+  query?: Record<string, unknown>;
+};
+
 // Função que todas as chamadas HTTP ao backend FastAPI
 export const api = {
   // GET: Usado para /metrics e /tickets (listagem e busca)
-  async get<T>(path: string, query?: Record<string, string>): Promise<T> {
+  async get<T>(path: string, options?: RequestOptions): Promise<T> {
     // Monta a URL completa com query params
-    const url = buildUrl(path, query);
+    const url = buildUrl(path, options?.query as Record<string, string>);
     // Faz a requisição GET usando fetch nativo
     const response = await fetch(url, {
       method: "GET",
