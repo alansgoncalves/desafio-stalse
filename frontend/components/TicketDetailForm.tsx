@@ -56,7 +56,7 @@ export function TicketDetailForm({ initialTicket }: TicketDetailFormProps) {
       <h2 className="text-xl font-semibold border-b pb-2 text-gray-800">Ações do Ticket</h2>
 
       {message && (
-        <div className={`p-3 rounded-md ${message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+        <div className={`p-3 rounded-md text-center ${message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
           {message.text}
         </div>
       )}

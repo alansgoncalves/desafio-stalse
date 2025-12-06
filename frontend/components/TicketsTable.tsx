@@ -77,6 +77,8 @@ useEffect(() => {
                     <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                             <tr>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data de Criação</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Canal</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assunto</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
@@ -88,6 +90,10 @@ useEffect(() => {
                         <tbody className="bg-white divide-y divide-gray-200">
                             {tickets.map((ticket) => (
                                 <tr key={ticket.id}>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                        {new Date(ticket.created_at).toLocaleDateString('pt-BR')} 
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{ticket.channel}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{ticket.id}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{ticket.subject}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{ticket.customer_name}</td>
