@@ -39,7 +39,7 @@ export function TicketDetailForm({ initialTicket }: TicketDetailFormProps) {
         await updateTicket(initialTicket.id, dataToUpdate);
         
         // Simulação de sucesso e recarga de dados
-        setMessage({ text: 'Ticket atualizado com sucesso! (Webhook n8n acionado)', type: 'success' });
+        setMessage({ text: 'Ticket atualizado com sucesso!', type: 'success' });
         // Recarrega a página para atualizar os dados
         router.refresh(); 
 

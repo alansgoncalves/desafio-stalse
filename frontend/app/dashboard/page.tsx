@@ -1,5 +1,6 @@
 import { fetchMetrics } from "@/lib/services";
 import { Metrics } from "@/lib/types";
+import Link from 'next/link';
 
 interface DailyTicketCount {
     date: string;
@@ -91,7 +92,18 @@ export default async function DashboardPage() {
 
   return (
     <main className="container mx-auto p-4 sm:p-6 lg:p-8">
-      <h1 className="text-3xl font-bold mb-8 text-gray-500">Dashboard de Métricas</h1>
+      <div className="flex justify-between items-start mb-8 flex-col sm:flex-row sm:items-center">
+        <h1 className="text-3xl font-bold text-gray-500 mb-4 sm:mb-0">
+            Dashboard de Métricas
+        </h1>
+        <Link href="/tickets" passHref>
+          <button 
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-150 w-full sm:w-auto cursor-pointer"
+          >
+            Ver Todos os Tickets
+          </button>
+        </Link>
+      </div>
       
       {/* Cards de Métricas */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
