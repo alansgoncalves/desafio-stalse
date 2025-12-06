@@ -18,7 +18,7 @@ export default async function TicketsPage() {
 
     return (
         <main className="container mx-auto p-4 sm:p-6 lg:p-8">
-            <h1 className="text-3xl font-bold mb-8 text-gray-900">Tickets Mini Inbox</h1>
+            <h1 className="text-3xl font-bold mb-8 text-gray-500">Tickets Mini Inbox</h1>
             
             {error ? (
                 <div className="text-center p-8 bg-red-100 text-red-700 rounded-lg">

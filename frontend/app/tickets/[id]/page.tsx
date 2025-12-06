@@ -8,6 +8,18 @@ interface TicketPageProps {
   };
 }
 
+// Define as opções para o formato DD/MM/YYYY
+const dateOptions: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+};
+
+
+
 export default async function TicketPage({ params }: TicketPageProps) {
 
   const { id } = await params; 
@@ -48,7 +60,7 @@ export default async function TicketPage({ params }: TicketPageProps) {
         <div className="grid grid-cols-2 gap-4 mb-6 text-gray-700">
           <p><strong>Cliente:</strong> {ticket.customer_name}</p>
           <p><strong>Canal:</strong> {ticket.channel}</p>
-          <p><strong>Data de Criação:</strong> {new Date(ticket.created_at).toLocaleString()}</p>
+          <p><strong>Data de Criação:</strong> {new Date(ticket.created_at).toLocaleString('pt-BR', dateOptions)}</p>
         </div>
 
         {/* Componente Cliente para a Interação */}

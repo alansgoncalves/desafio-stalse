@@ -65,7 +65,7 @@ useEffect(() => {
                     placeholder="Buscar por assunto ou cliente..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="p-2 border border-gray-300 rounded-lg w-1/3"
+                    className="p-2 border border-gray-300 rounded-lg w-1/3 placeholder-gray-600 text-gray-800"
                 />
             </div>
             
