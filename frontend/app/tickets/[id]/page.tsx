@@ -10,7 +10,7 @@ interface TicketPageProps {
 
 export default async function TicketPage({ params }: TicketPageProps) {
 
-  const { id } = await params;
+  const { id } = await params; 
 
   const idValue = String(id);
   const ticketId = parseInt(idValue);
