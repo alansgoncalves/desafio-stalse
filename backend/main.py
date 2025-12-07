@@ -136,7 +136,7 @@ def startup_event():
 # --- CONFIGURAÇÃO DO N8N ---
 N8N_WEBHOOK_URL = os.environ.get(
     "N8N_WEBHOOK_URL",
-    "http://localhost:5678/webhook/f3edc7d6-6ff1-44ee-a2be-475a3e839cc5" # <-- SUBSTITUA PELA SUA URL REAL
+    "http://localhost:5678/webhook/f3edc7d6-6ff1-44ee-a2be-475a3e839cc5"
 )
 
 def send_to_n8n(ticket_data: dict):
