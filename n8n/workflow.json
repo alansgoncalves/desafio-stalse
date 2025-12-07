@@ -1,0 +1,59 @@
+{
+  "name": "Mini-Inbox",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f3edc7d6-6ff1-44ee-a2be-475a3e839cc5",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e1e1d467-dbb7-4622-a28a-7322ad07e404",
+      "name": "Webhook",
+      "webhookId": "f3edc7d6-6ff1-44ee-a2be-475a3e839cc5"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const ticket = $json.body;\n\nconsole.log(`[Mini Inbox] Alerta de Webhook Recebido:`);\nconsole.log(`Ticket ID: ${ticket.id}`);\nconsole.log(`Assunto: ${ticket.subject}`);\nconsole.log(`Status Atual: ${ticket.status}`);\nconsole.log(`Prioridade: ${ticket.priority}`);\n\nreturn ticket;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "bdc7aa63-c426-473d-8385-dd70213ad4b6",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "624071cb-4631-4f70-8746-03b8113f2d28",
+  "meta": {
+    "instanceId": "f5aef15bd55ac27ee9d8a636505f328e74a64446096f66fc780fa6a20f6fbbc2"
+  },
+  "id": "t0ifbDRl7HTFLFEK",
+  "tags": []
+}
