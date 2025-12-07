@@ -220,3 +220,5 @@ frontend/.next
 
 # Dados
 data/processed/
+
+.DS_Store
