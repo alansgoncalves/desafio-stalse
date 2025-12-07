@@ -3,7 +3,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
 
 /**
  * Função para montar a URL com parâmetros de busca simples.
- * Exemplo: buildUrl("/tickets", {search: "problema"}) 
+ * Exemplo: buildUrl("/tickets", {search: "Alan"}) 
  *  "http://127.0.0.1:8000/tickets?search=Alan"
  */
 function buildUrl(path: string, query?: Record<string, string>): string {

@@ -11,7 +11,7 @@ interface YearlyTicketCount {
     count: number;
 }
 
-// --- FUNÇÃO DE AGREGAÇÃO (Movemos para o topo da página) ---
+// Função de agregação
 function aggregateByYear(dailyData: DailyTicketCount[]): YearlyTicketCount[] {
     const yearlyMap = dailyData.reduce((acc, item) => {
         const year = new Date(item.date).getFullYear();
@@ -25,6 +25,7 @@ return Array.from(yearlyMap.entries())
         .sort((a, b) => b.year - a.year);
 }
 
+// Componente de Card 
 const StatCard = ({ title, value }: { title: string; value: string | number }) => (
   <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
     <p className="text-sm font-medium text-gray-500">{title}</p>
@@ -32,12 +33,13 @@ const StatCard = ({ title, value }: { title: string; value: string | number }) =
   </div>
 );
 
+// Componente de lista com ordenação
 const TopItemsList = ({ title, data }: { title: string; data: Record<string, number> }) => (
   <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mt-6">
     <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>
     <dl className="space-y-2">
       {Object.entries(data)
-        .sort(([, countA], [, countB]) => countB - countA) // Ordena por contagem
+        .sort(([, countA], [, countB]) => countB - countA)
         .map(([name, count]) => (
           <div key={name} className="flex justify-between border-b pb-1">
             <dt className="text-sm text-gray-600">{name}</dt>
@@ -48,9 +50,10 @@ const TopItemsList = ({ title, data }: { title: string; data: Record<string, num
   </div>
 );
 
+// Componente de card para Total de Tickets abertos por Ano
 const YearlyTicketsCard = ({ data }: { data: YearlyTicketCount[] }) => (
     <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mt-6">
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Top 5 Tickets Abertos por Ano</h2>
+        <h2 className="text-lg font-semibold text-gray-800 mb-4">Total tickets abertos por ano</h2>
         <dl className="space-y-2">
             {data.slice(0, 5).map(({ year, count }) => (
                 <div key={year} className="flex justify-between border-b pb-1">
@@ -87,7 +90,7 @@ export default async function DashboardPage() {
      return <div className="p-4 text-center">Carregando dados...</div>;
   }
 
-  // Processamento dos dados no servidor (Server-Side)
+  // Processamento dos dados no servidor
   const ticketsByYear = aggregateByYear(metrics.tickets_by_day as DailyTicketCount[]);
 
   return (
@@ -109,7 +112,6 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <StatCard title="Total Geral de Tickets" value={metrics.total_tickets.toLocaleString('pt-BR')} />
         <StatCard title="Total de Categorias" value={Object.keys(metrics.top_categories).length} />
-        {/* Adicione mais um card simples aqui se necessário */}
         <StatCard title="Tickets no Último Ano" value={ticketsByYear[0]?.count.toLocaleString('pt-BR') || 'N/A'} />
       </div>
 

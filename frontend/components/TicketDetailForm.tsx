@@ -12,6 +12,7 @@ interface TicketDetailFormProps {
 const STATUS_OPTIONS = ['open', 'pending', 'closed'];
 const PRIORITY_OPTIONS = ['low', 'medium', 'high'];
 
+// Componente de formulário para detalhes do ticket
 export function TicketDetailForm({ initialTicket }: TicketDetailFormProps) {
   const [status, setStatus] = useState(initialTicket.status);
   const [priority, setPriority] = useState(initialTicket.priority);
@@ -24,11 +25,13 @@ export function TicketDetailForm({ initialTicket }: TicketDetailFormProps) {
     setIsLoading(true);
     setMessage(null);
 
+    // Prepara os dados para atualização, ignorando valores inalterados
     const dataToUpdate = {
         status: status !== initialTicket.status ? status : undefined,
         priority: priority !== initialTicket.priority ? priority : undefined,
     };
 
+    // Se nenhum campo foi alterado, não envia a requisição
     if (dataToUpdate.status === undefined && dataToUpdate.priority === undefined) {
         setMessage({ text: 'Nenhuma alteração detectada para enviar.', type: 'error' });
         setIsLoading(false);
